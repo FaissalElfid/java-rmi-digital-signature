@@ -11,22 +11,27 @@ import java.security.Signature;
 import java.security.SignatureException;
 
 public class DigitalSignature {
-	// cette methode permet de générer le pair de cles (privée + public)
+	// cette methode permet de gï¿½nï¿½rer le pair de cles (privï¿½e + public)
 	public static KeyPair generateKeyPair() throws NoSuchAlgorithmException, NoSuchProviderException {
-		// keyGen est un générateur des clés spectifique à l'algorithm "DSA"
-		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA", "SUN"); 	// DSA : digital signature algorithm, SUN: provider
-		SecureRandom random = SecureRandom.getInstance("SHA1PRNG", "SUN"); 		// SHA1PRING: algorithm de signature, SUN: provider
-		keyGen.initialize(1024, random); 										// initialiser le générateur des clés sur la taille des clés avec l'algorithm de cryptage
-		KeyPair pair = keyGen.generateKeyPair(); 								// générer la pair de clés
+		// keyGen est un gï¿½nï¿½rateur des clï¿½s spectifique ï¿½ l'algorithm "DSA"
+		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA", "SUN"); // DSA : digital signature algorithm, SUN:
+																				// provider
+		SecureRandom random = SecureRandom.getInstance("SHA1PRNG", "SUN"); // SHA1PRING: algorithm de cryptage, SUN:
+																			// provider
+		keyGen.initialize(1024, random); // initialiser le gï¿½nï¿½rateur des clï¿½s sur la taille des clï¿½s avec l'algorithm
+											// de cryptage
+		KeyPair pair = keyGen.generateKeyPair(); // gï¿½nï¿½rer la pair de clï¿½s
 		return pair;
 	}
-	// cette methode permet de signer un message avec la private key (chez le client)
+
+	// cette methode permet de signer un message avec la private key (chez le
+	// client)
 	public static byte[] signMessage(PrivateKey sk, String message)
 			throws NoSuchAlgorithmException, NoSuchProviderException, SignatureException, InvalidKeyException {
-		Signature sig = Signature.getInstance("SHA1withDSA", "SUN"); 			// SHA1PRING: algorithmde signature, SUN: provider
-		sig.initSign(sk); 														// Cette méthode prend la clé privée comme paramètre pour générer la signature.
-		sig.update(message.getBytes()); 										// mettre a jour le message
-		return sig.sign(); 														// envoyer la signature byte[]
+		Signature sig = Signature.getInstance("SHA1withDSA", "SUN"); // SHA1PRING: algorithmde signature, SUN: provider
+		sig.initSign(sk); // Cette mï¿½thode prend la clï¿½ privï¿½e comme paramï¿½tre pour gï¿½nï¿½rer la signature.
+		sig.update(message.getBytes()); // mettre a jour le message
+		return sig.sign(); // envoyer la signature byte[]
 	}
 
 }
