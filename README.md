@@ -5,9 +5,9 @@ Pour ce faire je vais utiliser la signature digital de java.security.Signature (
 
 ## Table des matières
 1. [Principes généraux](#general-principles)
-1.a. [Architecture de signature](#architecture)
-1.b. [Préparation du message signé](#envoie)
-1.c. [Réception du message signé](#reception)
+- 1.a. [Architecture de signature](#architecture)
+- 1.b. [Préparation du message signé](#envoie)
+- 1.c. [Réception du message signé](#reception)
 2. [Commentaires](#comment)
 3. [Exécuter le projet](#test)
 
